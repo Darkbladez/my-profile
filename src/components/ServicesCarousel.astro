@@ -2,14 +2,20 @@
 const services = [
   {
     number: "01",
-    tag: "Protección & Perímetro",
-    title: "Diseño y Soluciones de Ciberseguridad Perimetral",
+    tag: "Perímetro & Endpoints",
+    title: "Diseño y Soluciones de Ciberseguridad Integral",
     description:
-      "Arquitectura de protección para redes empresariales mediante Firewalls de Siguiente Generación (NGFW), interconexión segura entre sucursales (VPN Site-to-Site y acceso remoto) y políticas de seguridad Endpoint para blindar los activos digitales de tu empresa.",
-    highlights: ["Firewalls NGFW (Sophos / WatchGuard)", "VPN Segura entre sucursales", "Protección Endpoint centralizada"],
+      "Arquitectura de defensa en capas que combina protección de red perimetral con seguridad avanzada en los equipos de usuario. Implemento Firewalls de Siguiente Generación (NGFW) e interconexión VPN Site-to-Site entre sucursales, junto con plataformas EDR/XDR en la nube (como Kaspersky Endpoint Security Cloud) para detectar y bloquear malware, ransomware e intrusiones directamente en cada estación de trabajo.",
+    highlights: [
+      "Firewalls NGFW (Sophos / WatchGuard)",
+      "Interconexión segura VPN Site-to-Site y remota",
+      "Protección Endpoint & XDR (Kaspersky Cloud)",
+    ],
     ctaText: "Consultar sobre Ciberseguridad →",
-    whatsappMsg: "Hola Miguel, me interesa conversar sobre Diseño y Soluciones de Ciberseguridad Perimetral para mi empresa.",
-    diagramType: "security",
+    whatsappMsg:
+      "Hola Miguel, me interesa conversar sobre Diseño y Soluciones de Ciberseguridad (Firewall, VPN y protección Endpoint/XDR) para mi empresa.",
+    imageSrc: "/services/ciberseguridad.jpg",
+    imageAlt: "Esquema de Ciberseguridad Integral: Firewall, Antivirus y Agente",
   },
   {
     number: "02",
@@ -17,10 +23,16 @@ const services = [
     title: "Consultoría de Sistemas, Servidores y Almacenamiento",
     description:
       "Implementación y ordenamiento de la columna vertebral operativa de PyMEs: servidores de archivos centralizados, trabajo colaborativo en red, correo corporativo, telefonía IP y virtualización para eliminar el desorden operativo y agilizar el trabajo diario.",
-    highlights: ["Almacenamiento compartido y permisos", "Virtualización y servidores Windows/Linux", "Correo corporativo y Telefonía IP"],
+    highlights: [
+      "Almacenamiento compartido y control de permisos",
+      "Virtualización y servidores Windows/Linux",
+      "Correo corporativo y Telefonía IP",
+    ],
     ctaText: "Optimizar mis Sistemas →",
-    whatsappMsg: "Hola Miguel, me gustaría recibir consultoría para organizar los servidores y sistemas de mi negocio.",
-    diagramType: "systems",
+    whatsappMsg:
+      "Hola Miguel, me gustaría recibir consultoría para organizar los servidores y sistemas de mi negocio.",
+    imageSrc: "/services/sistemas.jpg",
+    imageAlt: "Esquema de Servidor Central conectando Archivos, Correo y Telefonía IP",
   },
   {
     number: "03",
@@ -28,10 +40,16 @@ const services = [
     title: "Estrategias de Respaldo y Recuperación (Backups)",
     description:
       "Diseño de planes de respaldo automatizado y recuperación ante desastres (en servidor local y nube) para proteger la información crítica de tu empresa frente a fallos de hardware, errores humanos o ataques de ransomware.",
-    highlights: ["Copias automatizadas programadas", "Esquema híbrido local + nube", "Pruebas de restauración ante fallos"],
+    highlights: [
+      "Copias automatizadas programadas",
+      "Esquema híbrido local + nube",
+      "Pruebas de restauración ante fallos",
+    ],
     ctaText: "Blindar mi Información →",
-    whatsappMsg: "Hola Miguel, quiero implementar una estrategia de respaldos (backups) segura para mi empresa.",
-    diagramType: "backup",
+    whatsappMsg:
+      "Hola Miguel, quiero implementar una estrategia de respaldos (backups) segura para mi empresa.",
+    imageSrc: "/services/backups.jpg",
+    imageAlt: "Esquema de Datos Críticos con Respaldo Local y Respaldo Nube",
   },
   {
     number: "04",
@@ -39,21 +57,31 @@ const services = [
     title: "Desarrollo Web de Presentación Empresarial",
     description:
       "Diseño y creación de sitios web informativos ultrarrápidos, modernos y adaptables a cualquier dispositivo, enfocados en proyectar autoridad, mostrar tus servicios con claridad y renovar la imagen digital de tu empresa frente a la competencia.",
-    highlights: ["Diseño moderno y 100% adaptable", "Carga ultrarrápida y optimizada", "Enfoque claro en captación de clientes"],
+    highlights: [
+      "Diseño moderno y 100% adaptable",
+      "Carga ultrarrápida y optimizada",
+      "Enfoque claro en captación de clientes",
+    ],
     ctaText: "Cotizar Sitio Web →",
-    whatsappMsg: "Hola Miguel, me interesa cotizar una página web de presentación para mi empresa.",
-    diagramType: "web",
+    whatsappMsg:
+      "Hola Miguel, me interesa cotizar una página web de presentación para mi empresa.",
+    imageSrc: "/services/web.jpg",
+    imageAlt: "Vista de Web Corporativa en escritorio y teléfono móvil",
   },
 ];
 ---
 
-<section id="servicios" class="min-h-screen py-20 px-6 flex flex-col justify-center border-t border-chalk/60 bg-white/50">
+<section
+  id="servicios"
+  class="min-h-screen py-20 px-6 flex flex-col justify-center border-t border-chalk/60 bg-white/50"
+>
   <div class="max-w-6xl mx-auto w-full">
-    
     <!-- Encabezado y controles desktop -->
     <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
       <div>
-        <span class="text-xs font-semibold uppercase tracking-wider text-walnut">Soluciones & Consultoría</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-walnut">
+          Soluciones & Consultoría
+        </span>
         <h2 class="font-serif text-3xl sm:text-4xl font-bold text-ink mt-1">
           ¿Cómo puedo <span class="chalk-mark">aportar valor</span> a tu empresa?
         </h2>
@@ -98,74 +126,39 @@ const services = [
             </span>
           </div>
 
-          <!-- Contenido: Esquema Visual Izquierda + Descripción Derecha -->
-          <div class="mt-6 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-            <!-- Imagen / Esquema Técnico Izquierda -->
-            <div class="md:col-span-5 bg-paper border border-chalk/70 rounded-xl p-6 flex items-center justify-center min-h-55">
-              {service.diagramType === "security" && (
-                <svg class="w-full max-w-60 h-auto" viewBox="0 0 240 160" fill="none">
-                  <rect x="20" y="30" width="60" height="40" rx="8" fill="#FAF8F5" stroke="#7C4A2D" stroke-width="2"/>
-                  <text x="50" y="54" text-anchor="middle" fill="#0B1320" font-size="10" font-weight="bold">Sede A</text>
-                  <rect x="160" y="30" width="60" height="40" rx="8" fill="#FAF8F5" stroke="#7C4A2D" stroke-width="2"/>
-                  <text x="190" y="54" text-anchor="middle" fill="#0B1320" font-size="10" font-weight="bold">Remoto</text>
-                  <path d="M80 50 H160" stroke="#0047AB" stroke-width="2" stroke-dasharray="4 4"/>
-                  <rect x="85" y="95" width="70" height="42" rx="10" fill="#0047AB"/>
-                  <text x="120" y="120" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="bold">NGFW + VPN</text>
-                  <path d="M120 50 V95" stroke="#0047AB" stroke-width="2"/>
-                </svg>
-              )}
-              {service.diagramType === "systems" && (
-                <svg class="w-full max-w-60 h-auto" viewBox="0 0 240 160" fill="none">
-                  <rect x="75" y="20" width="90" height="42" rx="8" fill="#0047AB"/>
-                  <text x="120" y="45" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="bold">Servidor Central</text>
-                  <path d="M120 62 V90 M55 90 H185 M55 90 V105 M120 90 V105 M185 90 V105" stroke="#7C4A2D" stroke-width="2"/>
-                  <rect x="25" y="105" width="60" height="34" rx="6" fill="#FFFFFF" stroke="#E6CCB2" stroke-width="2"/>
-                  <text x="55" y="126" text-anchor="middle" fill="#0B1320" font-size="9" font-weight="bold">Archivos</text>
-                  <rect x="90" y="105" width="60" height="34" rx="6" fill="#FFFFFF" stroke="#E6CCB2" stroke-width="2"/>
-                  <text x="120" y="126" text-anchor="middle" fill="#0B1320" font-size="9" font-weight="bold">Correo</text>
-                  <rect x="155" y="105" width="60" height="34" rx="6" fill="#FFFFFF" stroke="#E6CCB2" stroke-width="2"/>
-                  <text x="185" y="126" text-anchor="middle" fill="#0B1320" font-size="9" font-weight="bold">VoIP</text>
-                </svg>
-              )}
-              {service.diagramType === "backup" && (
-                <svg class="w-full max-w-60 h-auto" viewBox="0 0 240 160" fill="none">
-                  <rect x="25" y="55" width="64" height="50" rx="8" fill="#FFFFFF" stroke="#0B1320" stroke-width="2"/>
-                  <text x="57" y="84" text-anchor="middle" fill="#0B1320" font-size="10" font-weight="bold">Datos</text>
-                  <path d="M89 72 L145 45 M89 88 L145 115" stroke="#0047AB" stroke-width="2"/>
-                  <rect x="145" y="25" width="70" height="38" rx="8" fill="#E6CCB2"/>
-                  <text x="180" y="48" text-anchor="middle" fill="#0B1320" font-size="9" font-weight="bold">NAS Local</text>
-                  <rect x="145" y="97" width="70" height="38" rx="8" fill="#7C4A2D"/>
-                  <text x="180" y="120" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="bold">Copia Nube</text>
-                </svg>
-              )}
-              {service.diagramType === "web" && (
-                <svg class="w-full max-w-60 h-auto" viewBox="0 0 240 160" fill="none">
-                  <rect x="30" y="22" width="180" height="116" rx="10" fill="#FFFFFF" stroke="#0B1320" stroke-width="2"/>
-                  <line x1="30" y1="44" x2="210" y2="44" stroke="#E6CCB2" stroke-width="2"/>
-                  <circle cx="44" cy="33" r="3" fill="#7C4A2D"/>
-                  <circle cx="54" cy="33" r="3" fill="#E6CCB2"/>
-                  <rect x="46" y="58" width="85" height="14" rx="4" fill="#E6CCB2"/>
-                  <rect x="46" y="80" width="145" height="8" rx="4" fill="#0B1320" fill-opacity="0.15"/>
-                  <rect x="46" y="94" width="120" height="8" rx="4" fill="#0B1320" fill-opacity="0.15"/>
-                  <rect x="46" y="112" width="64" height="16" rx="5" fill="#0047AB"/>
-                </svg>
-              )}
+          <!-- Contenido: Imagen Izquierda (Ampliada) + Descripción Derecha -->
+          <div class="mt-6 grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+            <div class="md:col-span-5 bg-paper border border-chalk/70 rounded-xl p-3 sm:p-4 flex items-center justify-center min-h-70 md:min-h-85 shadow-2xs overflow-hidden">
+              <img
+                src={service.imageSrc}
+                alt={service.imageAlt}
+                class="w-full h-full max-h-65 md:max-h-77.5 object-contain hover:scale-[1.02] transition-transform duration-300"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="hidden flex-col items-center justify-center text-center p-4">
+                <span class="text-xs text-ink/55 font-medium">
+                  Guarda la imagen en:<br />
+                  <code class="text-cobalt">{service.imageSrc}</code>
+                </span>
+              </div>
             </div>
 
             <!-- Descripción y CTA Derecha -->
-            <div class="md:col-span-7 flex flex-col justify-between">
-              <p class="text-ink/80 text-base leading-relaxed">
-                {service.description}
-              </p>
+            <div class="md:col-span-7 flex flex-col justify-between py-1">
+              <div>
+                <p class="text-ink/80 text-base leading-relaxed">
+                  {service.description}
+                </p>
 
-              <ul class="mt-5 space-y-2">
-                {service.highlights.map((item) => (
-                  <li class="flex items-center gap-2.5 text-sm text-ink/85 font-medium">
-                    <span class="w-1.5 h-1.5 rounded-full bg-walnut"></span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+                <ul class="mt-5 space-y-2">
+                  {service.highlights.map((item) => (
+                    <li class="flex items-center gap-2.5 text-sm text-ink/85 font-medium">
+                      <span class="w-1.5 h-1.5 rounded-full bg-walnut shrink-0"></span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
               <div class="mt-7">
                 <a
@@ -218,7 +211,7 @@ const services = [
 
   function goToSlide(index: number) {
     if (!track) return;
-    const slideWidth = track.clientWidth + 24; // ancho + gap-6 (24px)
+    const slideWidth = track.clientWidth + 24;
     track.scrollTo({ left: index * slideWidth, behavior: 'smooth' });
     updateDots(index);
   }
@@ -244,7 +237,6 @@ const services = [
     });
   });
 
-  // Sincronizar puntos al deslizar con el dedo en móvil
   track?.addEventListener('scroll', () => {
     const current = Math.round(track.scrollLeft / (track.clientWidth + 24));
     updateDots(current);
