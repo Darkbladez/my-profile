@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0B1320;
+  --color-cobalt: #0047AB;
+  --color-walnut: #7C4A2D;
+  --color-chalk: #E6CCB2;
+  --color-paper: #FAF8F5;
+
+  --font-serif: "Lora", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+}
+
+/* Subrayado estilo tiza / marcador editorial */
+.chalk-mark {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.chalk-mark::after {
+  content: "";
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  bottom: 2px;
+  height: 38%;
+  background-color: #E6CCB2;
+  border-radius: 4px 8px 3px 6px;
+  transform: rotate(-0.8deg);
+  z-index: -1;
+  opacity: 0.9;
+}
+
+/* Ocultar barra de scroll en el carrusel sin perder deslizamiento táctil */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

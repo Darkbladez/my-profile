@@ -1,0 +1,84 @@
+---
+---
+
+<header
+  id="smart-navbar"
+  class="fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out bg-paper/90 backdrop-blur-md border-b border-chalk/60"
+>
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="#inicio" class="font-serif text-lg font-bold tracking-tight text-ink flex items-center gap-2.5">
+      <span class="w-2.5 h-2.5 rounded-full bg-walnut"></span>
+      Miguel Jiménez
+    </a>
+
+    <!-- Navegación Desktop -->
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-ink/75">
+      <a href="#inicio" class="hover:text-cobalt transition-colors">Perfil</a>
+      <a href="#servicios" class="hover:text-cobalt transition-colors">Servicios</a>
+      <a href="#trayectoria" class="hover:text-cobalt transition-colors">Marcas & Certificaciones</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a
+        href="https://wa.me/18095101810?text=Hola%20Miguel,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20contigo."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-cobalt hover:bg-cobalt/90 text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition-all shadow-sm"
+      >
+        Conversemos →
+      </a>
+
+      <!-- Botón menú móvil -->
+      <button
+        id="mobile-menu-btn"
+        aria-label="Abrir menú"
+        class="md:hidden p-2 text-ink hover:text-cobalt rounded-lg border border-chalk/70"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Menú desplegable móvil -->
+  <div id="mobile-menu" class="hidden md:hidden bg-paper border-b border-chalk/60 px-6 py-4 space-y-3 text-sm font-medium">
+    <a href="#inicio" class="block text-ink/80 hover:text-cobalt">Perfil</a>
+    <a href="#servicios" class="block text-ink/80 hover:text-cobalt">Servicios</a>
+    <a href="#trayectoria" class="block text-ink/80 hover:text-cobalt">Marcas & Certificaciones</a>
+  </div>
+</header>
+
+<script>
+  const navbar = document.getElementById('smart-navbar');
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    if (!navbar) return;
+
+    if (currentScrollY <= 50) {
+      navbar.classList.remove('-translate-y-full', 'shadow-md');
+    } else if (currentScrollY > lastScrollY && currentScrollY > 90) {
+      // Bajando: ocultar barra y cerrar menú móvil si estaba abierto
+      navbar.classList.add('-translate-y-full');
+      mobileMenu?.classList.add('hidden');
+    } else if (currentScrollY < lastScrollY) {
+      // Subiendo: mostrar barra flotante
+      navbar.classList.remove('-translate-y-full');
+      navbar.classList.add('shadow-md');
+    }
+
+    lastScrollY = currentScrollY;
+  }, { passive: true });
+
+  menuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+  });
+</script>
