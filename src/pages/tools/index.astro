@@ -1,0 +1,149 @@
+---
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+
+
+interface ToolItem {
+  id: string;
+  name: string;
+  href: string;
+  tintClass: string;
+  imageSrc?: string;
+}
+
+// Agrega aquí cada nueva aplicación que vayas creando
+const tools: ToolItem[] = [
+  {
+    id: 'facturacion-dgii',
+    name: 'Facturación DGII',
+    href: '/tools/facturacion-dgii',
+    tintClass: 'bg-cobalt/6 border-cobalt/20',
+    imageSrc: '/tools/facturacion-dgii.png',
+  },
+];
+---
+
+<html lang="es">
+    
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Tools Hub | Miguel Jiménez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-paper text-ink antialiased min-h-screen pt-24 pb-8 px-4 sm:pt-28 sm:pb-10 sm:px-8 flex flex-col">
+    <Navbar />
+    <!-- Tarjeta Marco Principal con bordes definidos y fondo sólido -->
+    <div class="max-w-6xl mx-auto w-full flex-1 bg-white border border-chalk rounded-4xl overflow-hidden shadow-xs p-6 sm:p-10 flex flex-col mt-5">
+      
+      <!-- Esquinas superiores: Volver a la izquierda + Contador a la derecha -->
+      <div class="flex items-center justify-between gap-4">
+        <a
+          href="/"
+          class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink/75 hover:text-cobalt px-3 py-1.5 rounded-lg bg-paper border border-chalk hover:border-cobalt/50 transition-all"
+        >
+          ← Portafolio
+        </a>
+
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-paper border border-chalk text-xs font-medium text-ink/80">
+          <span class="w-2 h-2 rounded-full bg-cobalt"></span>
+          <span>Apps Activas: <strong class="text-ink">{tools.length}</strong></span>
+        </div>
+      </div>
+
+      <!-- Bloque de Título Centrado con amplio espaciado -->
+      <header class="pt-12 pb-24 sm:pt-16 sm:pb-32 text-center max-w-2xl mx-auto">
+  <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-ink tracking-tight">
+    Miguel’s <span class="chalk-mark">Tools Hub</span>
+  </h1>
+  <p class="mt-5 text-sm sm:text-base text-ink/70 leading-relaxed">
+    Entorno personal de utilidades para <span class="font-semibold text-cobalt">gestión</span>,
+    <span class="font-semibold text-walnut">automatización</span> y <span class="font-semibold text-cobalt">operaciones</span>.
+    Selecciona una aplicación para comenzar.
+  </p>
+</header>
+
+      <!-- Cuadrícula Centrada de Aplicaciones -->
+      <main class="max-w-5xl mx-auto w-full pb-6 flex-1 mt-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {tools.map((tool) => (
+            <a
+              href={tool.href}
+              class={`group rounded-2xl border p-5 flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-cobalt/50 cursor-pointer ${tool.tintClass}`}
+            >
+              <!-- Nombre centrado arriba -->
+              <h2 class="font-serif text-lg font-bold text-ink text-center mb-4 group-hover:text-cobalt transition-colors">
+                {tool.name}
+              </h2>
+
+              <!-- Marco blanco interior para la ilustración -->
+              <div class="bg-white border border-chalk/80 rounded-xl p-4 h-48 flex items-center justify-center overflow-hidden shadow-2xs">
+                {tool.imageSrc && (
+                  <img
+                    src={tool.imageSrc}
+                    alt={tool.name}
+                    class="w-full h-full object-contain group-hover:scale-103 transition-transform duration-300"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                )}
+
+                <!-- Vista previa automática mientras colocas public/tools/facturacion-dgii.png -->
+                <div class={`${tool.imageSrc ? 'hidden' : 'flex'} w-full h-full flex-col justify-center gap-2.5`}>
+                  <div class="flex items-center justify-between px-3 py-2 rounded-lg bg-paper border border-chalk/80 text-xs font-mono">
+                    <span class="text-ink/60 font-sans">NCF</span>
+                    <strong class="text-cobalt">B0100000142</strong>
+                  </div>
+                  <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+                    <div class="p-2 rounded-lg bg-paper border border-chalk/80 text-center">
+                      <span class="block text-ink/55 font-sans">ITBIS</span>
+                      <strong class="text-ink">18 %</strong>
+                    </div>
+                    <div class="p-2 rounded-lg bg-paper border border-chalk/80 text-center">
+                      <span class="block text-ink/55 font-sans">Formato</span>
+                      <strong class="text-walnut">606 / 607</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </main>
+    </div>
+      <footer class="mt-14 pt-6 border-t border-chalk/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink/75">
+    <div class="text-center sm:text-left">
+      <p class="font-serif font-bold text-sm text-ink">Miguel Ángel Jiménez Polanco</p>
+      <p class="mt-0.5">Santo Domingo, República Dominicana · © 2026</p>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-center gap-4 font-medium">
+      <a href="mailto:zmiguelz04@gmail.com" class="hover:text-cobalt transition-colors">
+        zmiguelz04@gmail.com
+      </a>
+      <span class="text-chalk">|</span>
+      <a href="https://wa.me/18095101810" target="_blank" rel="noopener noreferrer" class="hover:text-cobalt transition-colors">
+        +1 809-510-1810
+      </a>
+      <span class="text-chalk">|</span>
+      <a href="https://www.linkedin.com/in/miguel-angel-jimenez-polanco-b4651a1a8/" target="_blank" rel="noopener noreferrer" class="hover:text-cobalt transition-colors">
+        LinkedIn
+      </a>
+      <span class="text-chalk">|</span>
+      <a href="https://github.com/Darkbladez" target="_blank" rel="noopener noreferrer" class="hover:text-cobalt transition-colors">
+        GitHub
+      </a>
+      <a href="#inicio" class="ml-2 px-3 py-1.5 rounded-lg bg-white border border-chalk text-ink hover:border-cobalt hover:text-cobalt transition-all">
+        Subir ↑
+      </a>
+    </div>
+  </footer>
+  </body>
+</html>

@@ -1,23 +1,44 @@
 ---
+const pathname = Astro.url.pathname;
+const isTools = pathname.startsWith('/tools');
 ---
 
 <header
   id="smart-navbar"
-  class="fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out bg-paper/90 backdrop-blur-md border-b border-chalk/60"
+  class="fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out bg-ink/95 backdrop-blur-md border-b border-white/10"
 >
   <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="#inicio" class="font-serif text-lg font-bold tracking-tight text-ink flex items-center gap-2.5">
-      <span class="w-2.5 h-2.5 rounded-full bg-walnut"></span>
+    <!-- Marca / Inicio -->
+    <a href="/#inicio" class="font-serif text-lg font-bold tracking-tight text-white flex items-center gap-2.5">
+      <span class="w-2.5 h-2.5 rounded-full bg-chalk"></span>
       Miguel Jiménez
     </a>
 
     <!-- Navegación Desktop -->
-    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-ink/75">
-      <a href="#inicio" class="hover:text-cobalt transition-colors">Perfil</a>
-      <a href="#servicios" class="hover:text-cobalt transition-colors">Servicios</a>
-      <a href="#trayectoria" class="hover:text-cobalt transition-colors">Marcas & Certificaciones</a>
+    <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-white/80">
+      <a href="/#inicio" class="hover:text-chalk transition-colors">Perfil</a>
+      <a href="/#servicios" class="hover:text-chalk transition-colors">Servicios</a>
+      <a href="/#trayectoria" class="hover:text-chalk transition-colors">Marcas & Certificaciones</a>
+
+      <span class="h-4 w-px bg-white/15" aria-hidden="true"></span>
+
+      <a
+        href="/tools"
+        aria-current={isTools ? 'page' : undefined}
+        class={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-semibold transition-all ${
+          isTools
+            ? 'bg-cobalt border-cobalt text-white'
+            : 'bg-white/10 border-white/15 text-chalk hover:bg-white/15 hover:text-white'
+        }`}
+      >
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        Tools
+      </a>
     </nav>
 
+    <!-- Acciones Derecha -->
     <div class="flex items-center gap-3">
       <a
         href="https://wa.me/18095101810?text=Hola%20Miguel,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20contigo."
@@ -32,7 +53,7 @@
       <button
         id="mobile-menu-btn"
         aria-label="Abrir menú"
-        class="md:hidden p-2 text-ink hover:text-cobalt rounded-lg border border-chalk/70"
+        class="md:hidden p-2 text-white hover:text-chalk rounded-lg border border-white/15"
       >
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -42,10 +63,18 @@
   </div>
 
   <!-- Menú desplegable móvil -->
-  <div id="mobile-menu" class="hidden md:hidden bg-paper border-b border-chalk/60 px-6 py-4 space-y-3 text-sm font-medium">
-    <a href="#inicio" class="block text-ink/80 hover:text-cobalt">Perfil</a>
-    <a href="#servicios" class="block text-ink/80 hover:text-cobalt">Servicios</a>
-    <a href="#trayectoria" class="block text-ink/80 hover:text-cobalt">Marcas & Certificaciones</a>
+  <div id="mobile-menu" class="hidden md:hidden bg-ink border-b border-white/10 px-6 py-4 space-y-3 text-sm font-medium">
+    <a href="/#inicio" class="block text-white/80 hover:text-chalk">Perfil</a>
+    <a href="/#servicios" class="block text-white/80 hover:text-chalk">Servicios</a>
+    <a href="/#trayectoria" class="block text-white/80 hover:text-chalk">Marcas & Certificaciones</a>
+    <a
+      href="/tools"
+      class={`block pt-2 border-t border-white/15 font-semibold ${
+        isTools ? 'text-white' : 'text-chalk hover:text-white'
+      }`}
+    >
+      &gt;_ Tools
+    </a>
   </div>
 </header>
 
@@ -62,11 +91,9 @@
     if (currentScrollY <= 50) {
       navbar.classList.remove('-translate-y-full', 'shadow-md');
     } else if (currentScrollY > lastScrollY && currentScrollY > 90) {
-      // Bajando: ocultar barra y cerrar menú móvil si estaba abierto
       navbar.classList.add('-translate-y-full');
       mobileMenu?.classList.add('hidden');
     } else if (currentScrollY < lastScrollY) {
-      // Subiendo: mostrar barra flotante
       navbar.classList.remove('-translate-y-full');
       navbar.classList.add('shadow-md');
     }
